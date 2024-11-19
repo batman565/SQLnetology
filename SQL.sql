@@ -30,7 +30,7 @@ create table if not exists Song(
 	id SERIAL primary key,
 	namesong varchar(40) not null,
 	time TIME not null,
-	idAlbum integer references Artists(id)
+	idAlbum integer references Album(id)
 );
 
 create table if not exists Collection(
