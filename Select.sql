@@ -25,10 +25,14 @@ select a.name , avg(time) from song s
 left join album a on s.idalbum = a.id 
 group by name;
 
-select a."name" from artists a 
-left join artists_album aa on a.id = aa.idartists 
-left join album a2 ON a2.id = aa.idalbum 
-where yearalbum != 2020
+SELECT a."name" 
+FROM artists a
+WHERE a.id NOT IN (
+    SELECT aa.idartists 
+    FROM artists_album aa
+    JOIN album a2 ON a2.id = aa.idalbum 
+    WHERE a2.yearalbum = 2020
+);
 
 select distinct (c."name") from collection c 
 left join collection_song cs on cs.idcollection = c.id 
