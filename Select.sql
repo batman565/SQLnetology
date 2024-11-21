@@ -1,6 +1,5 @@
-select namesong, max(time) from song 
-group by namesong 
-limit 1;
+select namesong, time from song 
+where time = (select max(time) from song);
 
 select namesong from song
 where time >= '00:03:30'
